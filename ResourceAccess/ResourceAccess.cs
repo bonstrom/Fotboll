@@ -57,7 +57,7 @@ namespace ResourceAccessNameSpace
             using (SqlConnection connection = new SqlConnection(connStr))
             {
                 connection.Open();
-                string query = "SELECT DISTINCT HomeTeam FROM football.dbo.premierLeague1415";
+                string query = "SELECT DISTINCT HomeTeam FROM dbo.premierLeague1415";
                 SqlCommand queryCommand = new SqlCommand(query, connection);
 
                 using (SqlDataReader reader = queryCommand.ExecuteReader())
