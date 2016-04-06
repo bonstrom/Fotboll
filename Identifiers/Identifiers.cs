@@ -16,4 +16,11 @@ namespace Identifiers
         public static Guid Championship_2013_2014 = new Guid("688853FA-6622-463C-8A6C-DAE686477213");
         public static Guid Championship_2012_2013 = new Guid("2E744C2B-08AE-49DE-8E41-10B4604760BE");
     }
+
+    public class Teams
+    {
+        public static Guid Arsenal = new Guid();
+        public static Guid Liverpool = new Guid();
+        public static Guid ManUnited = new Guid();
+    }
 }
