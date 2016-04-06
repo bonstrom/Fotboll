@@ -49,6 +49,10 @@
       <Project>{0946b755-1cf6-4122-8491-39ddfe0b6f4d}</Project>
       <Name>DataTransferObjects</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Identifiers\Identifiers.csproj">
+      <Project>{c6cde9fa-cf25-403d-9618-9b6ce55d1d52}</Project>
+      <Name>Identifiers</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

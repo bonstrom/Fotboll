@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using EngineNameSpace;
 using DataTransferObjects;
 using Identifiers;
+using System.Linq;
 
 namespace Soccer
 {
@@ -51,7 +52,35 @@ namespace Soccer
         private void seasonList_SelectedIndexChanged(object sender, EventArgs e)
         {
             var season = (ComboBoxItem)((ComboBox)sender).SelectedItem;
-            engine.LoadLeagueTable(season.Guid);
+            var leagueTable = engine.LoadLeagueTable(season.Guid);
+            if (leagueTable == null)
+            {
+                leagueInfo.Text = "No league found!";
+                dataTableLeague.Rows.Clear();
+            }
+            else {
+                dataTableLeague.AllowUserToAddRows = true;
+                int i = 0;
+                dataTableLeague.Rows.Clear();
+                leagueInfo.Text = "";
+                foreach (var row in leagueTable.GetAllTeams().OrderByDescending(team => team.Points))
+                {
+                    //När man kör en clear funkar det inte längre
+                    DataGridViewRow dataRow = (DataGridViewRow)dataTableLeague.Rows[0].Clone();
+                    dataRow.Cells[0].Value = i++ + 1;
+                    dataRow.Cells[1].Value = row.Team.Name;
+                    dataRow.Cells[2].Value = row.GamesPlayed;
+                    dataRow.Cells[3].Value = row.Wins;
+                    dataRow.Cells[4].Value = row.Draw;
+                    dataRow.Cells[5].Value = row.Losses;
+                    dataRow.Cells[6].Value = row.GoalsFor;
+                    dataRow.Cells[7].Value = row.GoalsAgainst;
+                    dataRow.Cells[8].Value = row.GoalsFor - row.GoalsAgainst;
+                    dataRow.Cells[9].Value = row.Points;
+                    dataTableLeague.Rows.Add(dataRow);
+                }
+                dataTableLeague.AllowUserToAddRows = false;
+            }
         }
     }
 }

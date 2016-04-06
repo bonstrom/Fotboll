@@ -1,6 +1,7 @@
 ﻿using System;
 using ResourceAccessNameSpace;
 using DataTransferObjects;
+using System.Linq;
 
 namespace EngineNameSpace
 {
@@ -14,16 +15,16 @@ namespace EngineNameSpace
 
         private void Initialize()
         {
-           // CalculateOdds(new Team(), new Team());
+            // CalculateOdds(new Team(), new Team());
         }
 
         public int CalculateOdds(Team homeTeam, Team awayTeam)
         {
-            return 5 + 4 * 3; 
+            return 5 + 4 * 3;
         }
 
         public Team[] GetPremierLeagueTeams()
-        {        
+        {
             return resource.GetPremierLeagueTeams();
         }
 

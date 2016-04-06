@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +9,7 @@ namespace DataTransferObjects
 {
     public class LeagueTable
     {
-        private List<LeagueTableRow> _rows;
+        private List<LeagueTableRow> _rows = new List<LeagueTableRow>();
         public LeagueTable(List<LeagueTableRow> rows)
         {
             _rows.AddRange(rows);
@@ -16,23 +17,36 @@ namespace DataTransferObjects
 
         public LeagueTableRow GetTeam(String Name)
         {
-            var row = from r in _rows
-            where r.Team.Name == Name
-            select r;
-            return row.FirstOrDefault();
+            return _rows.Single(row => row.Team.Name == Name);
+        }
+
+        public LeagueTableRow[] GetAllTeams()
+        {
+            return _rows.ToArray();
         }
 
         public class LeagueTableRow
         {
-            public int Place { get; set; }
+            public LeagueTableRow(DataRow row)
+            {
+                Team = new Team((string)row["Team"]);
+                GamesPlayed = (int)row["P"];
+                Wins = (int)row["W"];
+                Draw = (int)row["D"];
+                Losses = (int)row["L"];
+                GoalsFor = (int)row["F"];
+                GoalsAgainst = (int)row["A"];
+                Points = (int)row["Pts"];
+            }
+
             public Team Team { get; set; }
-            public short GamesPlayed { get; set; }
-            public short Wins { get; set; }
-            public short Draw { get; set; }
-            public short Losses { get; set; }
-            public short GoalsFor { get; set; }
-            public short GoalsAgainst { get; set; }
-            public short Points { get; set; }
+            public int GamesPlayed { get; set; }
+            public int Wins { get; set; }
+            public int Draw { get; set; }
+            public int Losses { get; set; }
+            public int GoalsFor { get; set; }
+            public int GoalsAgainst { get; set; }
+            public int Points { get; set; }
         }
     }
 

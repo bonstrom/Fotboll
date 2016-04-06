@@ -34,13 +34,25 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label4 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.seasonList = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dataTableLeague = new System.Windows.Forms.DataGridView();
+            this.leagueInfo = new System.Windows.Forms.Label();
+            this.Pos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Team = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Played = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Win = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Draw = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Loss = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GoalsFor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GoalsAgainst = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GoalDiff = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Points = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataTableLeague)).BeginInit();
             this.SuspendLayout();
             // 
             // homeTeamList
@@ -91,8 +103,9 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.leagueInfo);
+            this.tabPage1.Controls.Add(this.dataTableLeague);
             this.tabPage1.Controls.Add(this.seasonList);
-            this.tabPage1.Controls.Add(this.tableLayoutPanel1);
             this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
@@ -101,6 +114,24 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Tabel";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // seasonList
+            // 
+            this.seasonList.FormattingEnabled = true;
+            this.seasonList.Location = new System.Drawing.Point(22, 36);
+            this.seasonList.Name = "seasonList";
+            this.seasonList.Size = new System.Drawing.Size(163, 21);
+            this.seasonList.TabIndex = 0;
+            this.seasonList.SelectedIndexChanged += new System.EventHandler(this.seasonList_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(19, 20);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(43, 13);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "League";
             // 
             // tabPage2
             // 
@@ -116,44 +147,105 @@
             this.tabPage2.Text = "Compare";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // label4
+            // dataTableLeague
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(19, 20);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(43, 13);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "League";
+            this.dataTableLeague.AllowUserToOrderColumns = true;
+            this.dataTableLeague.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataTableLeague.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Pos,
+            this.Team,
+            this.Played,
+            this.Win,
+            this.Draw,
+            this.Loss,
+            this.GoalsFor,
+            this.GoalsAgainst,
+            this.GoalDiff,
+            this.Points});
+            this.dataTableLeague.Location = new System.Drawing.Point(22, 74);
+            this.dataTableLeague.Name = "dataTableLeague";
+            this.dataTableLeague.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.dataTableLeague.Size = new System.Drawing.Size(560, 461);
+            this.dataTableLeague.TabIndex = 7;
             // 
-            // tableLayoutPanel1
+            // leagueInfo
             // 
-            this.tableLayoutPanel1.ColumnCount = 10;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(22, 97);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(873, 374);
-            this.tableLayoutPanel1.TabIndex = 7;
+            this.leagueInfo.AutoSize = true;
+            this.leagueInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.leagueInfo.Location = new System.Drawing.Point(222, 36);
+            this.leagueInfo.Name = "leagueInfo";
+            this.leagueInfo.Size = new System.Drawing.Size(0, 20);
+            this.leagueInfo.TabIndex = 8;
             // 
-            // seasonList
+            // Pos
             // 
-            this.seasonList.FormattingEnabled = true;
-            this.seasonList.Location = new System.Drawing.Point(22, 36);
-            this.seasonList.Name = "seasonList";
-            this.seasonList.Size = new System.Drawing.Size(163, 21);
-            this.seasonList.TabIndex = 0;
-            this.seasonList.SelectedIndexChanged += new System.EventHandler(this.seasonList_SelectedIndexChanged);
+            this.Pos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Pos.HeaderText = "Pos";
+            this.Pos.Name = "Pos";
+            this.Pos.Width = 30;
+            // 
+            // Team
+            // 
+            this.Team.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Team.HeaderText = "Team";
+            this.Team.Name = "Team";
+            this.Team.Width = 59;
+            // 
+            // Played
+            // 
+            this.Played.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Played.HeaderText = "Played";
+            this.Played.Name = "Played";
+            this.Played.Width = 64;
+            // 
+            // Win
+            // 
+            this.Win.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Win.HeaderText = "Win";
+            this.Win.Name = "Win";
+            this.Win.Width = 51;
+            // 
+            // Draw
+            // 
+            this.Draw.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Draw.HeaderText = "Draw";
+            this.Draw.Name = "Draw";
+            this.Draw.Width = 57;
+            // 
+            // Loss
+            // 
+            this.Loss.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Loss.HeaderText = "Loss";
+            this.Loss.Name = "Loss";
+            this.Loss.Width = 54;
+            // 
+            // GoalsFor
+            // 
+            this.GoalsFor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.GoalsFor.HeaderText = "GF";
+            this.GoalsFor.Name = "GoalsFor";
+            this.GoalsFor.Width = 46;
+            // 
+            // GoalsAgainst
+            // 
+            this.GoalsAgainst.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.GoalsAgainst.HeaderText = "GA";
+            this.GoalsAgainst.Name = "GoalsAgainst";
+            this.GoalsAgainst.Width = 47;
+            // 
+            // GoalDiff
+            // 
+            this.GoalDiff.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.GoalDiff.HeaderText = "GD";
+            this.GoalDiff.Name = "GoalDiff";
+            this.GoalDiff.Width = 48;
+            // 
+            // Points
+            // 
+            this.Points.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Points.HeaderText = "Pts";
+            this.Points.Name = "Points";
+            this.Points.Width = 47;
             // 
             // Form1
             // 
@@ -168,6 +260,7 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataTableLeague)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -182,8 +275,19 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.ComboBox seasonList;
+        private System.Windows.Forms.DataGridView dataTableLeague;
+        private System.Windows.Forms.Label leagueInfo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Pos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Team;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Played;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Win;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Draw;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Loss;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GoalsFor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GoalsAgainst;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GoalDiff;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Points;
     }
 }
 

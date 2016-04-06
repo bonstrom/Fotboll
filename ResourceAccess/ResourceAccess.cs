@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using Identifiers;
 
 namespace ResourceAccessNameSpace
 {
@@ -47,8 +48,29 @@ namespace ResourceAccessNameSpace
 
         public LeagueTable GetLeagueTable(Guid season)
         {
-            //TODO
-            return new LeagueTable(new Team[0]);
+            LeagueTable leagueTable = null;
+            using (SqlConnection connection = new SqlConnection(connStr))
+            {
+                
+                if (season == Season.PremierLeague_2014_2015)
+                {
+                    connection.Open();
+                    string query = "SELECT * FROM dbo.LeagueTable1415";
+                    SqlCommand queryCommand = new SqlCommand(query, connection);
+                    SqlDataReader queryCommandReader = queryCommand.ExecuteReader();
+                    DataTable dataTable = new DataTable();
+                    dataTable.Load(queryCommandReader);
+                    List<LeagueTable.LeagueTableRow> rows = new List<LeagueTable.LeagueTableRow>();
+                    foreach (DataRow row in dataTable.Rows)
+                    {
+                        rows.Add(new LeagueTable.LeagueTableRow(row));
+                    }
+
+                    leagueTable = new LeagueTable(rows);
+                    connection.Close();
+                }
+            }
+            return leagueTable;
         }
 
         public Team[] GetPremierLeagueTeams()
