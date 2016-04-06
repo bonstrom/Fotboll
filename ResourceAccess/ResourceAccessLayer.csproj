@@ -50,6 +50,21 @@
       <Name>DataTransferObjects</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="Data\championship2010-2011.csv" />
+    <None Include="Data\championship2011-2012.csv" />
+    <None Include="Data\championship2012-2013.csv" />
+    <None Include="Data\championship2013-2014.csv" />
+    <None Include="Data\championship2014-2015.csv" />
+    <None Include="Data\championship2015-2016.csv" />
+    <None Include="Data\premierLeague2010-2011.csv" />
+    <None Include="Data\premierLeague2011-2012.csv" />
+    <None Include="Data\premierLeague2012-2013.csv" />
+    <None Include="Data\premierLeague2013-2014.csv" />
+    <None Include="Data\premierLeague2014-2015.csv" />
+    <None Include="Data\premierLeague2015-2016.csv" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
