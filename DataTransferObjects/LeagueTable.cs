@@ -15,6 +15,17 @@ namespace DataTransferObjects
             _rows.AddRange(rows);
         }
 
+        public LeagueTable()
+        {
+            _rows = new List<LeagueTableRow>();
+        }
+
+        public List<LeagueTableRow> Rows
+        {
+            get { return _rows; }
+            set { _rows = value; }
+        }
+
         public LeagueTableRow GetTeam(String Name)
         {
             return _rows.Single(row => row.Team.Name == Name);

@@ -1,0 +1,38 @@
+﻿<Window x:Class="SoccerWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SoccerWPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="550" Width="650">
+    <Window.DataContext>
+        <local:LeagueTableViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="41*"/>
+            <ColumnDefinition Width="204*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,45,0,-465" VerticalAlignment="Top" Height="455" Width="580"
+                  ItemsSource="{Binding Path=LeagueTable.Rows}" AutoGenerateColumns="False" Grid.ColumnSpan="2" Grid.Column="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Team" Binding="{Binding Team.Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="GP" Binding="{Binding GamesPlayed}"></DataGridTextColumn>
+                <DataGridTextColumn Header="W" Binding="{Binding Wins}"></DataGridTextColumn>
+                <DataGridTextColumn Header="D" Binding="{Binding Draw}"></DataGridTextColumn>
+                <DataGridTextColumn Header="L" Binding="{Binding Losses}"></DataGridTextColumn>
+                <DataGridTextColumn Header="GF" Binding="{Binding GoalsFor}"></DataGridTextColumn>
+                <DataGridTextColumn Header="GA" Binding="{Binding GoalsAgainst}"></DataGridTextColumn>
+                <DataGridTextColumn Header="P" Binding="{Binding Points}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <ComboBox x:Name="comboBox" Grid.ColumnSpan="2" Grid.Column="1" HorizontalAlignment="Left" Margin="10,17,0,0" VerticalAlignment="Top" Width="181"
+                  ItemsSource="{Binding Seasons}" DisplayMemberPath="Text" SelectedValuePath="Guid"
+                  SelectedValue="{Binding Path=SelectedSeason}"/>
+    </Grid>
+</Window>

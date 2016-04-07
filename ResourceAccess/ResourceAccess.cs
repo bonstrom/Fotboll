@@ -48,7 +48,7 @@ namespace ResourceAccessNameSpace
 
         public LeagueTable GetLeagueTable(Guid season)
         {
-            LeagueTable leagueTable = null;
+            LeagueTable leagueTable = new LeagueTable();
             using (SqlConnection connection = new SqlConnection(connStr))
             {
                 
