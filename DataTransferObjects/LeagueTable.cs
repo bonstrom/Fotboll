@@ -50,6 +50,7 @@ namespace DataTransferObjects
                 Points = (int)row["Pts"];
             }
 
+            public int Position { get; set; }
             public Team Team { get; set; }
             public int GamesPlayed { get; set; }
             public int Wins { get; set; }
@@ -58,6 +59,14 @@ namespace DataTransferObjects
             public int GoalsFor { get; set; }
             public int GoalsAgainst { get; set; }
             public int Points { get; set; }
+        }
+
+        public void setPositions()
+        {
+            int i = 1;
+            _rows = _rows.OrderByDescending(team => team.Points)
+                         .Select(team => { team.Position = i++; return team; })
+                         .ToList();
         }
     }
 

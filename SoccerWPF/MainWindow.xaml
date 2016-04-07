@@ -21,6 +21,7 @@
         <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,45,0,-465" VerticalAlignment="Top" Height="455" Width="580"
                   ItemsSource="{Binding Path=LeagueTable.Rows}" AutoGenerateColumns="False" Grid.ColumnSpan="2" Grid.Column="1">
             <DataGrid.Columns>
+                <DataGridTextColumn Header="Pos" Binding="{Binding Position}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Team" Binding="{Binding Team.Name}"></DataGridTextColumn>
                 <DataGridTextColumn Header="GP" Binding="{Binding GamesPlayed}"></DataGridTextColumn>
                 <DataGridTextColumn Header="W" Binding="{Binding Wins}"></DataGridTextColumn>
