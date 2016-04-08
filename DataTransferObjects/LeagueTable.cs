@@ -10,7 +10,7 @@ namespace DataTransferObjects
     public class LeagueTable
     {
         private List<LeagueTableRow> _rows;
-        public LeagueTable(List<LeagueTableRow> rows)
+        public LeagueTable(List<LeagueTableRow> rows) 
         {
             Rows = rows;
         }
@@ -33,11 +33,6 @@ namespace DataTransferObjects
         public LeagueTableRow GetTeam(String Name)
         {
             return Rows.Single(row => row.Team.Name == Name);
-        }
-
-        public LeagueTableRow[] GetAllTeams()
-        {
-            return _rows.ToArray();
         }
 
         private void setPositions()
