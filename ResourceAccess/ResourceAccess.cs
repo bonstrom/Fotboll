@@ -70,7 +70,6 @@ namespace ResourceAccessNameSpace
                     connection.Close();
                 }
             }
-            leagueTable.setPositions();
             return leagueTable;
         }
 

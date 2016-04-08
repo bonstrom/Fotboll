@@ -69,9 +69,7 @@ namespace SoccerWPF
 
         private void loadTable(Guid season)
         {
-            LeagueTable table = _resourceAccess.GetLeagueTable(season);
-            table.Rows = table.Rows.OrderByDescending(x => x.Points).ToList();
-            LeagueTable = table;
+            LeagueTable = _resourceAccess.GetLeagueTable(season);
         }
         #endregion
     }

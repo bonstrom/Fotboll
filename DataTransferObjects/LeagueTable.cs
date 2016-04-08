@@ -9,31 +9,48 @@ namespace DataTransferObjects
 {
     public class LeagueTable
     {
-        private List<LeagueTableRow> _rows = new List<LeagueTableRow>();
+        private List<LeagueTableRow> _rows;
         public LeagueTable(List<LeagueTableRow> rows)
         {
-            _rows.AddRange(rows);
+            Rows = rows;
+            setPositions();
         }
 
         public LeagueTable()
         {
-            _rows = new List<LeagueTableRow>();
+            Rows = new List<LeagueTableRow>();
+            setPositions();
         }
 
         public List<LeagueTableRow> Rows
         {
             get { return _rows; }
-            set { _rows = value; }
+            set
+            {
+                _rows = value;
+                setPositions();
+            }
         }
 
         public LeagueTableRow GetTeam(String Name)
         {
-            return _rows.Single(row => row.Team.Name == Name);
+            return Rows.Single(row => row.Team.Name == Name);
         }
 
         public LeagueTableRow[] GetAllTeams()
         {
             return _rows.ToArray();
+        }
+
+        private void setPositions()
+        {
+            int i = 1;
+            _rows = _rows.OrderByDescending(team => team.Points)
+                         .ThenByDescending(team => team.GoalDifference)
+                         .ThenByDescending(team=>team.GoalsFor)
+                         .ThenByDescending(team=>team.Wins)
+                         .Select(team => { team.Position = i++; return team; })
+                         .ToList();
         }
 
         public class LeagueTableRow
@@ -60,16 +77,6 @@ namespace DataTransferObjects
             public int GoalsAgainst { get; set; }
             public int GoalDifference { get { return GoalsFor - GoalsAgainst; } }
             public int Points { get; set; }
-        }
-
-        public void setPositions()
-        {
-            int i = 1;
-            _rows = _rows.OrderByDescending(team => team.Points)
-                         .Select(team => { team.Position = i++; return team; })
-                         .ToList();
-        }
+        }  
     }
-
-    
 }
