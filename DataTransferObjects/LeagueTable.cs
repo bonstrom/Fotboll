@@ -13,21 +13,19 @@ namespace DataTransferObjects
         public LeagueTable(List<LeagueTableRow> rows)
         {
             Rows = rows;
-            setPositions();
         }
 
         public LeagueTable()
         {
             Rows = new List<LeagueTableRow>();
-            setPositions();
         }
 
         public List<LeagueTableRow> Rows
         {
-            get { return _rows; }
+            get { return new List<LeagueTableRow>(_rows); }
             set
             {
-                _rows = value;
+                _rows = new List<LeagueTableRow>(value);
                 setPositions();
             }
         }
@@ -67,16 +65,16 @@ namespace DataTransferObjects
                 Points = (int)row["Pts"];
             }
 
-            public int Position { get; set; }
-            public Team Team { get; set; }
-            public int GamesPlayed { get; set; }
-            public int Wins { get; set; }
-            public int Draw { get; set; }
-            public int Losses { get; set; }
-            public int GoalsFor { get; set; }
-            public int GoalsAgainst { get; set; }
+            public int Position { get; internal set; }
+            public Team Team { get; }
+            public int GamesPlayed { get; }
+            public int Wins { get; }
+            public int Draw { get; }
+            public int Losses { get; }
+            public int GoalsFor { get; }
+            public int GoalsAgainst { get; }
             public int GoalDifference { get { return GoalsFor - GoalsAgainst; } }
-            public int Points { get; set; }
+            public int Points { get; }
         }  
     }
 }
