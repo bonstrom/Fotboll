@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SoccerWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="550" Width="650">
+        Title="MainWindow" Height="606" Width="679">
     <Window.DataContext>
         <local:LeagueTableViewModel/>
     </Window.DataContext>
@@ -15,26 +15,34 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="41*"/>
             <ColumnDefinition Width="204*"/>
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,45,0,-465" VerticalAlignment="Top" Height="455" Width="580"
+        <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="537" Margin="14,9,0,-500" VerticalAlignment="Top" Width="611" Grid.ColumnSpan="2">
+            <TabItem Header="Table">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,45,0,-465" VerticalAlignment="Top" Height="455" Width="580"
                   ItemsSource="{Binding Path=LeagueTable.Rows}" AutoGenerateColumns="False" Grid.ColumnSpan="2" Grid.Column="1">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Pos" Binding="{Binding Position}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Team" Binding="{Binding Team.Name}"></DataGridTextColumn>
-                <DataGridTextColumn Header="GP" Binding="{Binding GamesPlayed}"></DataGridTextColumn>
-                <DataGridTextColumn Header="W" Binding="{Binding Wins}"></DataGridTextColumn>
-                <DataGridTextColumn Header="D" Binding="{Binding Draw}"></DataGridTextColumn>
-                <DataGridTextColumn Header="L" Binding="{Binding Losses}"></DataGridTextColumn>
-                <DataGridTextColumn Header="GF" Binding="{Binding GoalsFor}"></DataGridTextColumn>
-                <DataGridTextColumn Header="GA" Binding="{Binding GoalsAgainst}"></DataGridTextColumn>
-                <DataGridTextColumn Header="+/-" Binding="{Binding GoalDifference}"></DataGridTextColumn>
-                <DataGridTextColumn Header="P" Binding="{Binding Points}"></DataGridTextColumn>
-            </DataGrid.Columns>
-        </DataGrid>
-        <ComboBox x:Name="comboBox" Grid.ColumnSpan="2" Grid.Column="1" HorizontalAlignment="Left" Margin="10,17,0,0" VerticalAlignment="Top" Width="181"
-                  ItemsSource="{Binding Seasons}" DisplayMemberPath="Text" SelectedValuePath="Guid"
-                  SelectedValue="{Binding Path=SelectedSeason}"/>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Pos" Binding="{Binding Position}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Team" Binding="{Binding Team.Name}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="GP" Binding="{Binding GamesPlayed}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="W" Binding="{Binding Wins}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="D" Binding="{Binding Draw}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="L" Binding="{Binding Losses}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="GF" Binding="{Binding GoalsFor}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="GA" Binding="{Binding GoalsAgainst}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="/-" Binding="{Binding GoalDifference}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="P" Binding="{Binding Points}"></DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <ComboBox x:Name="comboBox" Grid.ColumnSpan="2" Grid.Column="1" HorizontalAlignment="Left" Margin="10,17,0,0" VerticalAlignment="Top" Width="181"
+                   ItemsSource="{Binding Seasons}" DisplayMemberPath="Text" SelectedValuePath="Guid"
+                   SelectedValue="{Binding Path=SelectedSeason}"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Compare">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
