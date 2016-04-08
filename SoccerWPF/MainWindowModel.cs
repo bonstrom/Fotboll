@@ -54,6 +54,10 @@ namespace SoccerWPF
         #endregion
 
         #region Methods
+        /// <summary>
+        /// Skickar en notifiering till GUI:t att refresha den ändrade Propertyn
+        /// </summary>
+        /// <param name="propertyName"></param>
         private void RaisePropertyChanged(string propertyName)
         {
             PropertyChangedEventHandler handler = PropertyChanged;

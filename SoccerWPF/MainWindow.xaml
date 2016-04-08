@@ -29,6 +29,7 @@
                 <DataGridTextColumn Header="L" Binding="{Binding Losses}"></DataGridTextColumn>
                 <DataGridTextColumn Header="GF" Binding="{Binding GoalsFor}"></DataGridTextColumn>
                 <DataGridTextColumn Header="GA" Binding="{Binding GoalsAgainst}"></DataGridTextColumn>
+                <DataGridTextColumn Header="+/-" Binding="{Binding GoalDifference}"></DataGridTextColumn>
                 <DataGridTextColumn Header="P" Binding="{Binding Points}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
