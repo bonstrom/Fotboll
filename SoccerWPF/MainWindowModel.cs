@@ -8,7 +8,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Input;
 
 namespace SoccerWPF
 {
@@ -20,6 +20,8 @@ namespace SoccerWPF
             _resourceAccess = new ResourceAccess();
             _engine = new Engine();
             Teams = new List<Team>(_engine.GetPremierLeagueTeams());
+            CanExecute = true;
+            CompareCommand = new RelayCommand(ShowMessage, param => true);
         }
         #endregion
 
@@ -28,7 +30,7 @@ namespace SoccerWPF
         Engine _engine;
         private Guid _selectedSeason;
         private ResourceAccess _resourceAccess;
-
+        private ICommand _compareButtonCommand;
         public event PropertyChangedEventHandler PropertyChanged;
         #endregion
 
@@ -57,6 +59,19 @@ namespace SoccerWPF
                 loadTable(_selectedSeason);
             }
         }
+
+        public ICommand CompareCommand
+        {
+            get
+            {
+                return _compareButtonCommand;
+            }
+            set
+            {
+                _compareButtonCommand = value;
+            }
+        }
+        public bool CanExecute { get; set; }
         #endregion
 
         #region Methods
@@ -76,6 +91,11 @@ namespace SoccerWPF
         private void loadTable(Guid season)
         {
             LeagueTable = _resourceAccess.GetLeagueTable(season);
+        }
+
+        public void ShowMessage(object obj)
+        {
+            Console.WriteLine(obj.ToString());
         }
         #endregion
     }

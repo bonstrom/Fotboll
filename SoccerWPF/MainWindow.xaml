@@ -47,8 +47,12 @@
                               ItemsSource="{Binding Teams}" DisplayMemberPath="Name" SelectedValuePath="Name"/>
                     <ComboBox x:Name="comboBoxTeam2" HorizontalAlignment="Left" Margin="301,61,0,0" VerticalAlignment="Top" Width="120"
                               ItemsSource="{Binding Teams}" DisplayMemberPath="Name" SelectedValuePath="Name"/>
+                    <Button x:Name="buttonCompare" Content="Compare" Margin="202,129,283,337"
+                            Command="{Binding CompareCommand}"
+                            CommandParameter="{Binding}"/>
                 </Grid>
             </TabItem>
+
         </TabControl>
     </Grid>
 </Window>
