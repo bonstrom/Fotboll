@@ -1,4 +1,5 @@
 ﻿using DataTransferObjects;
+using EngineNameSpace;
 using Identifiers;
 using ResourceAccessNameSpace;
 using System;
@@ -17,11 +18,14 @@ namespace SoccerWPF
         public LeagueTableViewModel()
         {
             _resourceAccess = new ResourceAccess();
+            _engine = new Engine();
+            Teams = new List<Team>(_engine.GetPremierLeagueTeams());
         }
         #endregion
 
         #region Members
         LeagueTable _leagueTable;
+        Engine _engine;
         private Guid _selectedSeason;
         private ResourceAccess _resourceAccess;
 
@@ -36,6 +40,8 @@ namespace SoccerWPF
                 RaisePropertyChanged("LeagueTable");
             }
         }
+
+        public List<Team> Teams { get; protected set; }
 
         public List<ComboBoxItem> Seasons
         {
