@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SoccerWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="606" Width="679"
+        Title="MainWindow" Height="606" Width="1138"
         Icon="Resources/Icons/stryktipset.png">
     <Window.DataContext>
         <local:LeagueTableViewModel/>
@@ -18,9 +18,9 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="204*"/>
         </Grid.ColumnDefinitions>
-        <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="537" Margin="14,9,0,-500" VerticalAlignment="Top" Width="611" Grid.ColumnSpan="2">
+        <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="555" Margin="10,10,0,-514" VerticalAlignment="Top" Width="1110" Grid.ColumnSpan="2">
             <TabItem Header="Table">
-                <Grid Background="#FFE5E5E5">
+                <Grid Background="#FFE5E5E5" Margin="0,0,-2,-1">
                     <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" CanUserResizeColumns="False" CanUserResizeRows="False"
                         ItemsSource="{Binding Path=LeagueTable.Rows}" AutoGenerateColumns="False" IsReadOnly="True">
                         <DataGrid.Columns>
