@@ -21,19 +21,19 @@
         <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="537" Margin="14,9,0,-500" VerticalAlignment="Top" Width="611" Grid.ColumnSpan="2">
             <TabItem Header="Table">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,45,0,-465" VerticalAlignment="Top" Height="455" Width="580"
-                  ItemsSource="{Binding Path=LeagueTable.Rows}" AutoGenerateColumns="False" Grid.ColumnSpan="2" Grid.Column="1">
+                    <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" CanUserResizeColumns="False" CanUserResizeRows="False"
+                        ItemsSource="{Binding Path=LeagueTable.Rows}" AutoGenerateColumns="False" IsReadOnly="True">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Pos" Binding="{Binding Position}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Team" Binding="{Binding Team.Name}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="GP" Binding="{Binding GamesPlayed}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="W" Binding="{Binding Wins}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="D" Binding="{Binding Draw}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="L" Binding="{Binding Losses}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="GF" Binding="{Binding GoalsFor}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="GA" Binding="{Binding GoalsAgainst}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="+/-" Binding="{Binding GoalDifference}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="P" Binding="{Binding Points}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Pos" Width="40" Binding="{Binding Position}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Team" Width="120" Binding="{Binding Team.Name}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="GP" Width="40" Binding="{Binding GamesPlayed}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="W" Width="40" Binding="{Binding Wins}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="D" Width="40" Binding="{Binding Draw}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="L" Width="40" Binding="{Binding Losses}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="GF" Width="40" Binding="{Binding GoalsFor}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="GA" Width="40" Binding="{Binding GoalsAgainst}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="+/-" Width="40" Binding="{Binding GoalDifference}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="P" Width="40" Binding="{Binding Points}"></DataGridTextColumn>
                         </DataGrid.Columns>
                     </DataGrid>
                     <ComboBox x:Name="comboBox" Grid.ColumnSpan="2" Grid.Column="1" HorizontalAlignment="Left" Margin="10,17,0,0" VerticalAlignment="Top" Width="181"
@@ -46,4 +46,9 @@
             </TabItem>
         </TabControl>
     </Grid>
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <!-- Funkar som css -->
+        </Style>
+    </Window.Resources>
 </Window>
