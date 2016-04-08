@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SoccerWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="606" Width="679">
+        Title="MainWindow" Height="606" Width="679"
+        Icon="Resources/Icons/stryktipset.png">
     <Window.DataContext>
         <local:LeagueTableViewModel/>
     </Window.DataContext>
@@ -31,7 +32,7 @@
                             <DataGridTextColumn Header="L" Binding="{Binding Losses}"></DataGridTextColumn>
                             <DataGridTextColumn Header="GF" Binding="{Binding GoalsFor}"></DataGridTextColumn>
                             <DataGridTextColumn Header="GA" Binding="{Binding GoalsAgainst}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="/-" Binding="{Binding GoalDifference}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="+/-" Binding="{Binding GoalDifference}"></DataGridTextColumn>
                             <DataGridTextColumn Header="P" Binding="{Binding Points}"></DataGridTextColumn>
                         </DataGrid.Columns>
                     </DataGrid>
