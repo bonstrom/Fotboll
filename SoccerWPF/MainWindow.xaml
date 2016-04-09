@@ -57,7 +57,7 @@
                 <Grid Background="#FFE5E5E5" Margin="0,0,-2,-1">
                     <TextBlock x:Name="textblock2" HorizontalAlignment="Left" Margin="20,54,0,0" TextWrapping="Wrap" Text="{Binding Stryktipsstring}" VerticalAlignment="Top" Height="405" Width="497"/>
                     <Button x:Name="button" Content="Hämta Stryktipset" HorizontalAlignment="Left" Margin="20,10,0,0" VerticalAlignment="Top" Width="121" Height="29"
-                            Command="{Binding StryktipsCommand}" CommandParameter="{Binding}"/>
+                            Command="{Binding StryktipsCommand}" IsEnabled="{Binding CanExecuteStryktipset}"/>
 
                 </Grid>
             </TabItem>

@@ -21,6 +21,7 @@ namespace SoccerWPF
             _engine = new Engine();
             Teams = new List<Team>(_engine.GetPremierLeagueTeams());
             CanExecute = true;
+            CanExecuteStryktipset = true;
             CompareCommand = new RelayCommand(ShowCompareMessage, param => CanExecute);
             StryktipsCommand = new RelayCommand(LoadStryktipsCoupon, param => CanExecute);
         }
@@ -36,6 +37,7 @@ namespace SoccerWPF
         public event PropertyChangedEventHandler PropertyChanged;
         public string _compareText;
         private string _stryktipsstring;
+        private bool _canExecuteStryktipset;
         #endregion
 
         #region Properties
@@ -111,6 +113,14 @@ namespace SoccerWPF
             }
         }
         public bool CanExecute { get; set; }
+        public bool CanExecuteStryktipset {
+            get { return _canExecuteStryktipset; }
+            set
+            {
+                _canExecuteStryktipset = value;
+                RaisePropertyChanged("CanExecuteStryktipset");
+            }
+        }
         #endregion
 
         #region Methods
@@ -145,10 +155,15 @@ namespace SoccerWPF
             }
         }
 
-        public void LoadStryktipsCoupon(object obj)
+        public async void LoadStryktipsCoupon(object obj)
         {
-            StryktipsCoupon coupon = _resourceAccess.GetStryktipsCoupon();
-            Stryktipsstring = coupon.ToString();
+            CanExecuteStryktipset = false;
+            await Task.Run(() => {
+                StryktipsCoupon acoupon = _resourceAccess.GetStryktipsCoupon();
+                CanExecuteStryktipset = true;
+                Stryktipsstring = acoupon.ToString();
+            });
+            Console.WriteLine("Hämtat");
         }
         #endregion
     }
