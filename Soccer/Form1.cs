@@ -63,7 +63,7 @@ namespace Soccer
                 int i = 0;
                 dataTableLeague.Rows.Clear();
                 leagueInfo.Text = "";
-                foreach (var row in leagueTable.GetAllTeams().OrderByDescending(team => team.Points))
+                foreach (var row in leagueTable.Rows.OrderByDescending(team => team.Points))
                 {
                     //När man kör en clear funkar det inte längre
                     DataGridViewRow dataRow = (DataGridViewRow)dataTableLeague.Rows[0].Clone();

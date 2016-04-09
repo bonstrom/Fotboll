@@ -21,7 +21,7 @@ namespace SoccerWPF
             _engine = new Engine();
             Teams = new List<Team>(_engine.GetPremierLeagueTeams());
             CanExecute = true;
-            CompareCommand = new RelayCommand(ShowMessage, param => true);
+            CompareCommand = new RelayCommand(ShowMessage, param => CanExecute);
         }
         #endregion
 
@@ -32,6 +32,7 @@ namespace SoccerWPF
         private ResourceAccess _resourceAccess;
         private ICommand _compareButtonCommand;
         public event PropertyChangedEventHandler PropertyChanged;
+        public string _compareText;
         #endregion
 
         #region Properties
@@ -57,6 +58,18 @@ namespace SoccerWPF
             set {
                 _selectedSeason = value;
                 loadTable(_selectedSeason);
+            }
+        }
+
+        public string Team1 { get; set; }
+        public string Team2 { get; set; }
+        public string CompareText
+        {
+            get { return _compareText; }
+            set
+            {
+                _compareText = value;
+                RaisePropertyChanged("CompareText");
             }
         }
 
@@ -95,7 +108,7 @@ namespace SoccerWPF
 
         public void ShowMessage(object obj)
         {
-            Console.WriteLine(obj.ToString());
+            CompareText = Team1 + " vinner garanterat över " + Team2 + "!";
         }
         #endregion
     }
