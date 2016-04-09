@@ -21,7 +21,7 @@ namespace SoccerWPF
             _engine = new Engine();
             Teams = new List<Team>(_engine.GetPremierLeagueTeams());
             CanExecute = true;
-            CompareCommand = new RelayCommand(ShowMessage, param => CanExecute);
+            CompareCommand = new RelayCommand(ShowCompareMessage, param => CanExecute);
         }
         #endregion
 
@@ -106,9 +106,18 @@ namespace SoccerWPF
             LeagueTable = _resourceAccess.GetLeagueTable(season);
         }
 
-        public void ShowMessage(object obj)
+        public void ShowCompareMessage(object obj)
         {
-            CompareText = Team1 + " vinner garanterat över " + Team2 + "!";
+            List<Match> matches = _engine.GetMatches(new Team(Team1), new Team(Team2));
+            int homeWin = matches.Where(x=>x.Winner != null).Where(x=>x.Winner.Name == Team1).Count();
+            int draw = matches.Where(x => x.Winner == null).Count();
+            int awayWin = matches.Where(x => x.Winner != null).Where(x => x.Winner.Name == Team2).Count();
+            CompareText = Team1 + " - " + Team2 + " " + homeWin + "-" + draw + "-" + awayWin + Environment.NewLine;
+            foreach (Match match in matches)
+            {
+                CompareText = CompareText + match + Environment.NewLine;
+            }
+            
         }
         #endregion
     }

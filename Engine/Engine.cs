@@ -2,6 +2,7 @@
 using ResourceAccessNameSpace;
 using DataTransferObjects;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace EngineNameSpace
 {
@@ -31,6 +32,11 @@ namespace EngineNameSpace
         public Team[] GetChampionshipTeams()
         {
             return resource.GetPremierLeagueTeams();
+        }
+
+        public List<Match> GetMatches(Team team1, Team team2)
+        {
+            return resource.GetMatches(team1, team2);
         }
 
         public LeagueTable LoadLeagueTable(Guid season)
