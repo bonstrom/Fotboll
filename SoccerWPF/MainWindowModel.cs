@@ -22,6 +22,7 @@ namespace SoccerWPF
             Teams = new List<Team>(_engine.GetPremierLeagueTeams());
             CanExecute = true;
             CompareCommand = new RelayCommand(ShowCompareMessage, param => CanExecute);
+            StryktipsCommand = new RelayCommand(LoadStryktipsCoupon, param => CanExecute);
         }
         #endregion
 
@@ -31,14 +32,17 @@ namespace SoccerWPF
         private Guid _selectedSeason;
         private ResourceAccess _resourceAccess;
         private ICommand _compareButtonCommand;
+        private ICommand _stryktipsButtonCommand;
         public event PropertyChangedEventHandler PropertyChanged;
         public string _compareText;
+        private string _stryktipsstring;
         #endregion
 
         #region Properties
         public LeagueTable LeagueTable {
             get { return _leagueTable; }
-            set {
+            set
+            {
                 _leagueTable = value;
                 RaisePropertyChanged("LeagueTable");
             }
@@ -57,7 +61,7 @@ namespace SoccerWPF
             get { return _selectedSeason; }
             set {
                 _selectedSeason = value;
-                loadTable(_selectedSeason);
+                LoadTable(_selectedSeason);
             }
         }
 
@@ -73,6 +77,16 @@ namespace SoccerWPF
             }
         }
 
+        public string Stryktipsstring
+        {
+            get { return _stryktipsstring; }
+            set
+            {
+                _stryktipsstring = value;
+                RaisePropertyChanged("Stryktipsstring");
+            }
+        }
+
         public ICommand CompareCommand
         {
             get
@@ -82,6 +96,18 @@ namespace SoccerWPF
             set
             {
                 _compareButtonCommand = value;
+            }
+        }
+
+        public ICommand StryktipsCommand
+        {
+            get
+            {
+                return _stryktipsButtonCommand;
+            }
+            set
+            {
+                _stryktipsButtonCommand = value;
             }
         }
         public bool CanExecute { get; set; }
@@ -101,7 +127,7 @@ namespace SoccerWPF
             }
         }
 
-        private void loadTable(Guid season)
+        private void LoadTable(Guid season)
         {
             LeagueTable = _resourceAccess.GetLeagueTable(season);
         }
@@ -117,7 +143,12 @@ namespace SoccerWPF
             {
                 CompareText = CompareText + match + Environment.NewLine;
             }
-            
+        }
+
+        public void LoadStryktipsCoupon(object obj)
+        {
+            StryktipsCoupon coupon = _resourceAccess.GetStryktipsCoupon();
+            Stryktipsstring = coupon.ToString();
         }
         #endregion
     }

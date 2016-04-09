@@ -5,6 +5,8 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using Identifiers;
+using System.Net;
+using Newtonsoft.Json;
 
 namespace ResourceAccessNameSpace
 {
@@ -125,6 +127,19 @@ namespace ResourceAccessNameSpace
                 connection.Close();
                 return matches;
             }
+        }
+
+        public StryktipsCoupon GetStryktipsCoupon()
+        {
+            Uri jsonUri = new Uri("http://aivu.se/hemsida/strykt/api/stryktipset");
+            string jsonString = "";
+            using (WebClient wc = new WebClient())
+            {
+                jsonString = wc.DownloadString(jsonUri);
+            }
+            StryktipsCoupon stryktipsCoupon = JsonConvert.DeserializeObject<StryktipsCoupon>(jsonString);
+
+            return stryktipsCoupon;
         }
     }
 }
