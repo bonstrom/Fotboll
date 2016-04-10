@@ -9,7 +9,7 @@
         Title="MainWindow" Height="606" Width="1138"
         Icon="../Resources/Icons/stryktipset.png">
     <Window.DataContext>
-        <viewModel:LeagueTableViewModel/>
+        <viewModel:MainWindowModel/>
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
@@ -33,7 +33,6 @@
             <TabItem Header="Stryktipset">
                 <Grid Background="#FFE5E5E5" Margin="0,0,-2,-1">
                     <view:StryktipsetControl/>
-
                 </Grid>
             </TabItem>
         </TabControl>

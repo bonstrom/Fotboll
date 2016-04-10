@@ -54,10 +54,14 @@
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Compile Include="ViewModel\CompareViewModel.cs" />
+    <Compile Include="ViewModel\LeagueTableViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
+    <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="View\StryktipsetControl.xaml.cs">
       <DependentUpon>StryktipsetControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\StryktipsetViewModel.cs" />
     <Page Include="View\CompareControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
