@@ -54,8 +54,19 @@
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
-    <Compile Include="RelayCommand.cs" />
-    <Page Include="MainWindow.xaml">
+    <Compile Include="ViewModel\RelayCommand.cs" />
+    <Compile Include="View\StryktipsetControl.xaml.cs">
+      <DependentUpon>StryktipsetControl.xaml</DependentUpon>
+    </Compile>
+    <Page Include="View\CompareControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LeagueTableControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -63,13 +74,23 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="View\CompareControl.xaml.cs">
+      <DependentUpon>CompareControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LeagueTableControl.xaml.cs">
+      <DependentUpon>LeagueTableControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\StryktipsetControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainWindowModel.cs" />
+    <Compile Include="ViewModel\MainWindowModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

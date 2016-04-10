@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="SoccerWPF.View.CompareControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SoccerWPF.View"
+             mc:Ignorable="d" 
+             >
+    <Grid>
+        <ComboBox x:Name="comboBoxTeam1" HorizontalAlignment="Left" Margin="116,61,0,0" VerticalAlignment="Top" Width="120"
+                              ItemsSource="{Binding Teams}" DisplayMemberPath="Name" SelectedValuePath="Name" SelectedValue="{Binding Path=Team1}"/>
+        <ComboBox x:Name="comboBoxTeam2" HorizontalAlignment="Left" Margin="301,61,0,0" VerticalAlignment="Top" Width="120"
+                              ItemsSource="{Binding Teams}" DisplayMemberPath="Name" SelectedValuePath="Name" SelectedValue="{Binding Path=Team2}"/>
+        <Button x:Name="buttonCompare" Content="Compare" Margin="191,129,776,346" IsEnabled="{Binding CanExecuteCompare}"
+                            Command="{Binding CompareCommand}"
+                            CommandParameter="{Binding}"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="116,255,0,0" TextWrapping="Wrap" Text="{Binding CompareText}" VerticalAlignment="Top" Height="133" Width="305"/>
+    </Grid>
+</UserControl>

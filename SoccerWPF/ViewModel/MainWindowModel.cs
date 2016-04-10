@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace SoccerWPF
+namespace SoccerWPF.ViewModel
 {
     public class LeagueTableViewModel : INotifyPropertyChanged
     {
@@ -20,10 +20,10 @@ namespace SoccerWPF
             _resourceAccess = new ResourceAccess();
             _engine = new Engine();
             Teams = new List<Team>(_engine.GetPremierLeagueTeams());
-            CanExecute = true;
+            CanExecuteCompare = false;
             CanExecuteStryktipset = true;
-            CompareCommand = new RelayCommand(ShowCompareMessage, param => CanExecute);
-            StryktipsCommand = new RelayCommand(LoadStryktipsCoupon, param => CanExecute);
+            CompareCommand = new RelayCommand(ShowCompareMessage);
+            StryktipsCommand = new RelayCommand(LoadStryktipsCoupon);
         }
         #endregion
 
@@ -37,7 +37,10 @@ namespace SoccerWPF
         public event PropertyChangedEventHandler PropertyChanged;
         public string _compareText;
         private string _stryktipsstring;
+        private bool _canExecuteCompare;
         private bool _canExecuteStryktipset;
+        private string _team1;
+        private string _team2;
         #endregion
 
         #region Properties
@@ -67,8 +70,24 @@ namespace SoccerWPF
             }
         }
 
-        public string Team1 { get; set; }
-        public string Team2 { get; set; }
+        public string Team1
+        {
+            get { return _team1; }
+            set
+            {
+                _team1 = value;
+                CanExecuteCompare = Team1 != null && Team2 != null;
+            }
+        }
+        public string Team2
+        {
+            get { return _team2; }
+            set
+            {
+                _team2 = value;
+                CanExecuteCompare = Team1 != null && Team2 != null;
+            }
+        }
         public string CompareText
         {
             get { return _compareText; }
@@ -112,7 +131,18 @@ namespace SoccerWPF
                 _stryktipsButtonCommand = value;
             }
         }
-        public bool CanExecute { get; set; }
+        public bool CanExecuteCompare
+        {
+            get
+            {
+                return _canExecuteCompare;
+            }
+            set
+            {
+                _canExecuteCompare = value;
+                RaisePropertyChanged("CanExecuteCompare");
+            }
+        }
         public bool CanExecuteStryktipset {
             get { return _canExecuteStryktipset; }
             set
@@ -142,7 +172,7 @@ namespace SoccerWPF
             LeagueTable = _resourceAccess.GetLeagueTable(season);
         }
 
-        public void ShowCompareMessage(object obj)
+        public void ShowCompareMessage()
         {
             List<Match> matches = _engine.GetMatches(new Team(Team1), new Team(Team2));
             int homeWin = matches.Where(x=>x.Winner != null).Where(x=>x.Winner.Name == Team1).Count();
@@ -155,7 +185,7 @@ namespace SoccerWPF
             }
         }
 
-        public async void LoadStryktipsCoupon(object obj)
+        public async void LoadStryktipsCoupon()
         {
             CanExecuteStryktipset = false;
             await Task.Run(() => {
