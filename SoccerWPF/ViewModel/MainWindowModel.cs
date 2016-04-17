@@ -22,6 +22,7 @@ namespace SoccerWPF.ViewModel
             LeagueTableModel = new LeagueTableViewModel(_resourceAccess);
             CompareModel = new CompareViewModel(_resourceAccess, _engine, LeaguesTables.PremierLeague_2014_2015);
             StryktipsetModel = new StryktipsetViewModel(_resourceAccess, _engine);
+            TeamInfoModel = new TeamInfoViewModel(_resourceAccess, _engine);
         }
         #endregion
 
@@ -31,6 +32,7 @@ namespace SoccerWPF.ViewModel
         private LeagueTableViewModel _leagueTableModel;
         private CompareViewModel _compareModel;
         private StryktipsetViewModel _stryktipsetModel;
+        private TeamInfoViewModel _teamInfoModel;
         #endregion
 
         #region Properties
@@ -57,6 +59,7 @@ namespace SoccerWPF.ViewModel
                 _compareModel = value;
             }
         }
+
         public StryktipsetViewModel StryktipsetModel
         {
             get
@@ -66,6 +69,18 @@ namespace SoccerWPF.ViewModel
             set
             {
                 _stryktipsetModel = value;
+            }
+        }
+
+        public TeamInfoViewModel TeamInfoModel
+        {
+            get
+            {
+                return _teamInfoModel;
+            }
+            set
+            {
+                _teamInfoModel = value;
             }
         }
         #endregion

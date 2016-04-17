@@ -6,15 +6,15 @@
              xmlns:local="clr-namespace:SoccerWPF.View"
              mc:Ignorable="d">
     <Grid>
-        <ComboBox x:Name="comboBoxTeam1" HorizontalAlignment="Left" Margin="116,61,0,0" VerticalAlignment="Top" Width="120"
-                              ItemsSource="{Binding CompareModel.Teams}" DisplayMemberPath="Name" SelectedValuePath="Name" 
-                  SelectedValue="{Binding Path=CompareModel.Team1}"/>
-        <ComboBox x:Name="comboBoxTeam2" HorizontalAlignment="Left" Margin="301,61,0,0" VerticalAlignment="Top" Width="120"
-                              ItemsSource="{Binding CompareModel.Teams}" DisplayMemberPath="Name" SelectedValuePath="Name" 
-                  SelectedValue="{Binding Path=CompareModel.Team2}"/>
         <ComboBox x:Name="comboBox" Grid.ColumnSpan="2" Grid.Column="1" HorizontalAlignment="Left" Margin="10,17,0,0" VerticalAlignment="Top" Width="181"
                    ItemsSource="{Binding CompareModel.Seasons}" DisplayMemberPath="Text" SelectedValuePath="KeyVal"
                    SelectedValue="{Binding Path=CompareModel.SelectedSeason}"/>
+        <ComboBox x:Name="comboBoxTeam1" HorizontalAlignment="Left" Margin="116,61,0,0" VerticalAlignment="Top" Width="120"
+                   ItemsSource="{Binding CompareModel.Teams}" DisplayMemberPath="Name" SelectedValuePath="Name" 
+                   SelectedValue="{Binding Path=CompareModel.Team1}"/>
+        <ComboBox x:Name="comboBoxTeam2" HorizontalAlignment="Left" Margin="301,61,0,0" VerticalAlignment="Top" Width="120"
+                   ItemsSource="{Binding CompareModel.Teams}" DisplayMemberPath="Name" SelectedValuePath="Name" 
+                   SelectedValue="{Binding Path=CompareModel.Team2}"/>
         <Button x:Name="buttonCompare" Content="Compare" Margin="191,129,776,346" IsEnabled="{Binding CompareModel.CanExecuteCompare}"
                             Command="{Binding CompareModel.CompareCommand}"
                             CommandParameter="{Binding}"/>

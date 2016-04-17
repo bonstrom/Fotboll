@@ -4,11 +4,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SoccerWPF.View"
-             mc:Ignorable="d" >
-    <Grid>
-        <TextBlock x:Name="textblock1" HorizontalAlignment="Left" Margin="20,54,0,0" TextWrapping="Wrap" Text="{Binding TeamInfoViewModel.MatchesHomeString}" 
-                   VerticalAlignment="Top" Height="200" Width="300"/>
-        <TextBlock x:Name="textblock2" HorizontalAlignment="Left" Margin="20,54,0,0" TextWrapping="Wrap" Text="{Binding TeamInfoViewModel.MatchesAwayString}" 
-                   VerticalAlignment="Top" Height="200" Width="300"/>
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="500" >
+    <Grid Margin="10,10,98,84">
+        <ComboBox x:Name="seasonBox" HorizontalAlignment="Left" Margin="127,10,0,0" VerticalAlignment="Top" Width="181"
+                   ItemsSource="{Binding TeamInfoModel.Seasons}" DisplayMemberPath="Text" SelectedValuePath="KeyVal"
+                   SelectedValue="{Binding Path=TeamInfoModel.SelectedSeason}"/>
+        <ComboBox x:Name="comboBoxTeam" HorizontalAlignment="Left" Margin="338,10,0,0" VerticalAlignment="Top" Width="120"
+                   ItemsSource="{Binding TeamInfoModel.Teams}" DisplayMemberPath="Name" SelectedValuePath="Name" 
+                   SelectedValue="{Binding Path=TeamInfoModel.Team}"/>
+        <TextBlock x:Name="textblock1" HorizontalAlignment="Left" Margin="10,69,0,0" TextWrapping="Wrap" Text="{Binding TeamInfoModel.MatchesHomeString}" 
+                   VerticalAlignment="Top" Height="100" Width="298"/>
+        <TextBlock x:Name="textblock2" HorizontalAlignment="Left" Margin="10,190,0,0" TextWrapping="Wrap" Text="{Binding TeamInfoModel.MatchesAwayString}" 
+                   VerticalAlignment="Top" Height="100" Width="298"/>
     </Grid>
 </UserControl>
