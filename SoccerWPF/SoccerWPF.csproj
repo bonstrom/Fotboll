@@ -57,7 +57,11 @@
     <Compile Include="ViewModel\CompareViewModel.cs" />
     <Compile Include="ViewModel\LeagueTableViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
+    <Compile Include="ViewModel\TeamInfoViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="View\TeamInfoControl.xaml.cs">
+      <DependentUpon>TeamInfoControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\StryktipsetControl.xaml.cs">
       <DependentUpon>StryktipsetControl.xaml</DependentUpon>
     </Compile>
@@ -88,6 +92,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\TeamInfoControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\StryktipsetControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -1,15 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace DataTransferObjects
 {
   public class ComboBoxItem
     {
-        public ComboBoxItem(Guid guid, string text)
+        public ComboBoxItem(KeyValuePair<Guid, string> keyVal, string text)
         {
-            Guid = guid;
+            KeyVal = keyVal;
             Text = text;
         }
-        public Guid Guid { get; }
+        public KeyValuePair<Guid, string> KeyVal { get; }
         public string Text { get; }
 
         public override string ToString()

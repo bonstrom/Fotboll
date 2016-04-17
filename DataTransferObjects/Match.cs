@@ -23,6 +23,9 @@ namespace DataTransferObjects
         public int GoalsHome { get; set; }
         public int GoalsAway { get; set; }
 
+        ///<summary>
+        ///<para>Returns the winning team or null if it is a draw</para>
+        ///</summary>
         public Team Winner
         {
             get
@@ -33,7 +36,6 @@ namespace DataTransferObjects
                 }
                 else if (GoalsHome == GoalsAway)
                 {
-                    //TODO: Inte särskilt snyggt att retuernera null. Kan behöva en omdesign
                     return null;
                 }
                 return AwayTeam;

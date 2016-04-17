@@ -20,7 +20,7 @@ namespace SoccerWPF.ViewModel
             _resourceAccess = new ResourceAccess();
             _engine = new Engine();
             LeagueTableModel = new LeagueTableViewModel(_resourceAccess);
-            CompareModel = new CompareViewModel(_resourceAccess, _engine);
+            CompareModel = new CompareViewModel(_resourceAccess, _engine, LeaguesTables.PremierLeague_2014_2015);
             StryktipsetModel = new StryktipsetViewModel(_resourceAccess, _engine);
         }
         #endregion

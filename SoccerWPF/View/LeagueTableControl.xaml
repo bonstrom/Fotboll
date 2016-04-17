@@ -22,7 +22,7 @@
             </DataGrid.Columns>
         </DataGrid>
         <ComboBox x:Name="comboBox" Grid.ColumnSpan="2" Grid.Column="1" HorizontalAlignment="Left" Margin="10,17,0,0" VerticalAlignment="Top" Width="181"
-                   ItemsSource="{Binding LeagueTableModel.Seasons}" DisplayMemberPath="Text" SelectedValuePath="Guid"
+                   ItemsSource="{Binding LeagueTableModel.Seasons}" DisplayMemberPath="Text" SelectedValuePath="KeyVal"
                    SelectedValue="{Binding Path=LeagueTableModel.SelectedSeason}"/>
     </Grid>
 </UserControl>

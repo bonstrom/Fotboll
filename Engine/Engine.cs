@@ -3,6 +3,7 @@ using ResourceAccessNameSpace;
 using DataTransferObjects;
 using System.Linq;
 using System.Collections.Generic;
+using Identifiers;
 
 namespace EngineNameSpace
 {
@@ -24,22 +25,36 @@ namespace EngineNameSpace
             return 5 + 4 * 3;
         }
 
-        public Team[] GetPremierLeagueTeams()
+        public Team[] GetLeagueTeams(KeyValuePair<Guid, string> league)
         {
-            return resource.GetPremierLeagueTeams();
+            if(league.Key == SeasonMatches.PremierLeague_2014_2015.Key)
+                return resource.GetLeagueTeams(LeaguesTables.PremierLeague_2014_2015);
+
+            if (league.Key == SeasonMatches.PremierLeague_2013_2014.Key)
+                return resource.GetLeagueTeams(LeaguesTables.PremierLeague_2013_2014);
+
+            if (league.Key == SeasonMatches.PremierLeague_2012_2013.Key)
+                return resource.GetLeagueTeams(LeaguesTables.PremierLeague_2012_2013);
+
+            if (league.Key == SeasonMatches.Championship_2014_2015.Key)
+                return resource.GetLeagueTeams(LeaguesTables.Championship_2014_2015);
+
+            if (league.Key == SeasonMatches.Championship_2013_2014.Key)
+                return resource.GetLeagueTeams(LeaguesTables.Championship_2013_2014);
+
+            if (league.Key == SeasonMatches.Championship_2012_2013.Key)
+                return resource.GetLeagueTeams(LeaguesTables.Championship_2012_2013);
+     
+            else
+                return resource.GetLeagueTeams(league);
         }
 
-        public Team[] GetChampionshipTeams()
+        public List<Match> GetMatches(Team team1, Team team2, KeyValuePair<Guid, string> season)
         {
-            return resource.GetPremierLeagueTeams();
+            return resource.GetMatches(team1, team2, season);
         }
 
-        public List<Match> GetMatches(Team team1, Team team2)
-        {
-            return resource.GetMatches(team1, team2);
-        }
-
-        public LeagueTable LoadLeagueTable(Guid season)
+        public LeagueTable LoadLeagueTable(KeyValuePair<Guid, string> season)
         {
             return resource.GetLeagueTable(season);
         }

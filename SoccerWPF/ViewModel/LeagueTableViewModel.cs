@@ -22,7 +22,7 @@ namespace SoccerWPF.ViewModel
 
         #region Members
         LeagueTable _leagueTable;
-        private Guid _selectedSeason;
+        private KeyValuePair<Guid, string> _selectedSeason;
         private ResourceAccess _resourceAccess;
         #endregion
 
@@ -41,12 +41,12 @@ namespace SoccerWPF.ViewModel
         {
             get
             {
-                return new List<ComboBoxItem> { new ComboBoxItem(Season.PremierLeague_2014_2015, "Premier League 2014-2015"),
-                                                    new ComboBoxItem(Season.PremierLeague_2013_2014, "Premier League 2013-2014")};
+                return new List<ComboBoxItem> { new ComboBoxItem(LeaguesTables.PremierLeague_2014_2015, "Premier League 2014-2015"),
+                                                new ComboBoxItem(LeaguesTables.Championship_2014_2015, "Championshit 2014-2015")};
             }
         }
 
-        public Guid SelectedSeason
+        public KeyValuePair<Guid, string> SelectedSeason
         {
             get { return _selectedSeason; }
             set
@@ -58,7 +58,7 @@ namespace SoccerWPF.ViewModel
         #endregion
 
         #region Methods
-        private void LoadTable(Guid season)
+        private void LoadTable(KeyValuePair<Guid, string> season)
         {
             LeagueTable = _resourceAccess.GetLeagueTable(season);
         }
