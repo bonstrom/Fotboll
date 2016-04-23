@@ -19,6 +19,7 @@ namespace SoccerWPF.ViewModel
             _engine = engine;
             CanExecuteStryktipset = true;
             StryktipsCommand = new RelayCommand(LoadStryktipsCoupon);
+            StryktipsEvaluate = new RelayCommand(EvaluateStryktipset);
         }
         #endregion
 
@@ -26,8 +27,10 @@ namespace SoccerWPF.ViewModel
         private ResourceAccess _resourceAccess;
         Engine _engine;
         private ICommand _stryktipsButtonCommand;
+        private ICommand _stryktipsButtonEvaluateCommand;
         private string _stryktipsstring;
         private bool _canExecuteStryktipset;
+        StryktipsCoupon _acoupon;
         #endregion
 
         #region Properties
@@ -53,6 +56,19 @@ namespace SoccerWPF.ViewModel
                 _stryktipsButtonCommand = value;
             }
         }
+
+        public ICommand StryktipsEvaluate
+        {
+            get
+            {
+                return _stryktipsButtonEvaluateCommand;
+            }
+            set
+            {
+                _stryktipsButtonEvaluateCommand = value;
+            }
+        }
+
         public bool CanExecuteStryktipset
         {
             get { return _canExecuteStryktipset; }
@@ -70,11 +86,20 @@ namespace SoccerWPF.ViewModel
         {
             CanExecuteStryktipset = false;
             await Task.Run(() => {
-                StryktipsCoupon acoupon = _resourceAccess.GetStryktipsCoupon();
+                _acoupon = _resourceAccess.GetStryktipsCoupon();
                 CanExecuteStryktipset = true;
-                Stryktipsstring = acoupon.ToString();
+                Stryktipsstring = _acoupon.ToString();
             });
             Console.WriteLine("Hämtat");
+        }
+
+        public async void EvaluateStryktipset(StryktipsCoupon acoupon)
+        {
+            if(acoupon != null)
+                await Task.Run(() => {
+                    _engine.EvaluateStryktipset(acoupon);
+                });
+            
         }
 
         #endregion

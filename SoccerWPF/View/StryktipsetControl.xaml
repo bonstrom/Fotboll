@@ -10,5 +10,7 @@
                    VerticalAlignment="Top" Height="405" Width="497"/>
         <Button x:Name="button" Content="Hämta Stryktipset" HorizontalAlignment="Left" Margin="20,10,0,0" VerticalAlignment="Top" Width="121" Height="29"
                             Command="{Binding StryktipsetModel.StryktipsCommand}" IsEnabled="{Binding StryktipsetModel.CanExecuteStryktipset}"/>
+        <Button x:Name="button2" Content="Utvärdera Stryktipset" HorizontalAlignment="Left" Margin="20,475,0,-45" VerticalAlignment="Top" Width="121" Height="29"
+                            Command="{Binding StryktipsetModel.StryktipsEvaluate}" IsEnabled="{Binding StryktipsetModel.CanExecuteStryktipset}"/>
     </Grid>
 </UserControl>

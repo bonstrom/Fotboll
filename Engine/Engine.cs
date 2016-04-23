@@ -58,5 +58,10 @@ namespace EngineNameSpace
         {
             return resource.GetLeagueTable(season);
         }
+
+        public void EvaluateStryktipset(StryktipsCoupon acoupon)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
