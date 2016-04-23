@@ -59,9 +59,42 @@ namespace EngineNameSpace
             return resource.GetLeagueTable(season);
         }
 
-        public void EvaluateStryktipset(StryktipsCoupon acoupon)
+        public GoldenTicket EvaluateStryktipset(StryktipsCoupon coupon)
         {
-            throw new NotImplementedException();
+            var goldenTicket = new GoldenTicket();
+            foreach(var match in coupon.matches.match)
+            {
+                var result = EvaluateMatch(match);
+                goldenTicket.result.Add(result);
+            }
+            return goldenTicket;
+        }
+
+        private string EvaluateMatch(StryktipsCoupon.Match match)
+        {
+            string result = "";
+            int marks = 0;
+
+            if (match.HomeWin > 25)
+            {
+                marks++;
+                result += "1";
+            }
+            if (match.Draw > 25)
+            {
+                marks++;
+                result += "X";
+            }
+            if (match.AwayWin > 25 && marks < 2)
+            {
+                result += "2";
+            }
+            return result;
+        }
+
+        private void GetTeamStrength()
+        {
+            
         }
     }
 }

@@ -44,4 +44,19 @@ namespace DataTransferObjects
             return str;
         }
     }
+
+    public class GoldenTicket
+    {
+        public List<string> result { get; set; }
+
+        public GoldenTicket()
+        {
+            result = new List<string>();
+        }
+
+        public override string ToString()
+        {
+            return result.Aggregate((current, next) => current + "\n" + next);
+        }
+    }
 }

@@ -31,6 +31,7 @@ namespace SoccerWPF.ViewModel
         private string _stryktipsstring;
         private bool _canExecuteStryktipset;
         StryktipsCoupon _acoupon;
+        private string _goldenTicket;
         #endregion
 
         #region Properties
@@ -42,6 +43,16 @@ namespace SoccerWPF.ViewModel
             {
                 _stryktipsstring = value;
                 RaisePropertyChanged("Stryktipsstring");
+            }
+        }
+
+        public string StryktipsEvaluation
+        {
+            get { return _goldenTicket; }
+            set
+            {
+                _goldenTicket = value;
+                RaisePropertyChanged("StryktipsEvaluation");
             }
         }
 
@@ -93,15 +104,16 @@ namespace SoccerWPF.ViewModel
             Console.WriteLine("Hämtat");
         }
 
-        public async void EvaluateStryktipset(StryktipsCoupon acoupon)
+        public async void EvaluateStryktipset()
         {
-            if(acoupon != null)
+            GoldenTicket goldenTicket;
+            if(_acoupon != null)
                 await Task.Run(() => {
-                    _engine.EvaluateStryktipset(acoupon);
+                    goldenTicket = _engine.EvaluateStryktipset(_acoupon);
+                    StryktipsEvaluation = goldenTicket.ToString();
                 });
             
         }
-
         #endregion
     }
 }

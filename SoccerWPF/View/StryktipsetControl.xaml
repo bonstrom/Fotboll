@@ -8,6 +8,8 @@
     <Grid>
         <TextBlock x:Name="textblock2" HorizontalAlignment="Left" Margin="20,54,0,0" TextWrapping="Wrap" Text="{Binding StryktipsetModel.Stryktipsstring}" 
                    VerticalAlignment="Top" Height="405" Width="497"/>
+        <TextBlock x:Name="textblock3" HorizontalAlignment="Left" Margin="373,54,0,0" TextWrapping="Wrap" Text="{Binding StryktipsetModel.StryktipsEvaluation}" 
+                   VerticalAlignment="Top" Height="405" Width="86"/>
         <Button x:Name="button" Content="Hämta Stryktipset" HorizontalAlignment="Left" Margin="20,10,0,0" VerticalAlignment="Top" Width="121" Height="29"
                             Command="{Binding StryktipsetModel.StryktipsCommand}" IsEnabled="{Binding StryktipsetModel.CanExecuteStryktipset}"/>
         <Button x:Name="button2" Content="Utvärdera Stryktipset" HorizontalAlignment="Left" Margin="20,475,0,-45" VerticalAlignment="Top" Width="121" Height="29"
