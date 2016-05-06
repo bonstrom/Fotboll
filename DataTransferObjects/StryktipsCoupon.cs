@@ -54,6 +54,11 @@ namespace DataTransferObjects
             result = new List<string>();
         }
 
+        public GoldenTicket(List<string> ticket)
+        {
+            result = ticket;
+        }
+
         public override string ToString()
         {
             return result.Aggregate((current, next) => current + "\n" + next);
