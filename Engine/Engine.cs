@@ -59,21 +59,26 @@ namespace EngineNameSpace
             return resource.GetLeagueTable(season);
         }
 
-        public GoldenTicket EvaluateStryktipset(StryktipsCoupon coupon)
+        public StryktipsCoupon EvaluateStryktipset(StryktipsMatches stryktipsMatches)
         {
-            var goldenTicket = new GoldenTicket();
-            foreach(var match in coupon.matches.match)
-            {
-                var result = EvaluateMatch(match);
-                goldenTicket.result.Add(result);
-            }
+            int COUPONGPRICE = 128;
+            int WHOLEGUARDS = 0;
+            int HALFGUARDS = 7;
+
+            var stryktipsCoupon = new StryktipsCoupon(stryktipsMatches);
+            stryktipsCoupon = GenerateCouponMarks(stryktipsCoupon, COUPONGPRICE);
+            //foreach (var match in stryktipsMatches.matches.match)
+            //{
+            //    var result = EvaluateMatch(match);
+
+            //}
             //Lista med tecken
             List<string> l = new List<string>();
             //Stryktipsraden
             List<string> r = new List<string> { "", "", "", "", "", "", "", "", "", "", "", "","" };
 
             //Lägg in det tecknet med högst spelfördelning i tipsraden och lägg in övriga tecken i en lista
-            foreach (var match in coupon.matches.match)
+            foreach (var match in stryktipsMatches.matches.match)
             {
                 int home = match.HomeWin;
                 int draw = match.Draw;
@@ -124,30 +129,70 @@ namespace EngineNameSpace
                 }
                 num++;
             }
-            return new GoldenTicket(r);
+            return stryktipsCoupon;
         }
 
-        private string EvaluateMatch(StryktipsCoupon.Match match)
+        private StryktipsCoupon GenerateCouponMarks(StryktipsCoupon stryktipsCoupon, int price, int wholeGuards = 13, int halfGuards = 13)
         {
-            string result = "";
-            int marks = 0;
+            bool canAddWholeGuard = true;
+            bool canAddHalfGuard = true;
 
-            if (match.HomeWin > 25)
+            //Lägg in mest spelade
+            foreach (var match in stryktipsCoupon.Matches)
             {
-                marks++;
-                result += "1";
+                if (match.HomeWinBetters > match.DrawBetters && match.HomeWinBetters > match.AwayWinBetters)
+                    match.One = true;
+                else if (match.DrawBetters > match.AwayWinBetters)
+                    match.Cross = true;
+                else
+                    match.Two = true;
             }
-            if (match.Draw > 25)
+
+            //Lägg in minst spelade
+            stryktipsCoupon.OrderByLeastPlayed();
+            foreach (var match in stryktipsCoupon.Matches)
             {
-                marks++;
-                result += "X";
+                if (match.HomeWinBetters < match.DrawBetters && match.HomeWinBetters < match.AwayWinBetters)
+                    match.One = true;
+                else if (match.DrawBetters < match.AwayWinBetters)
+                    match.Cross = true;
+                else
+                    match.Two = true;
+
+
+                if((stryktipsCoupon.HalfGuards() >= halfGuards && stryktipsCoupon.WholeGuards() >= wholeGuards) || stryktipsCoupon.CouponPrice() >= price)
+                {
+                    return stryktipsCoupon;
+                }
             }
-            if (match.AwayWin > 25 && marks < 2)
+
+
+            //DEBUG
+            foreach (var match in stryktipsCoupon.Matches)
             {
-                result += "2";
+                Console.WriteLine(match.MatchNumber + ": " + match.HomeWinBetters + " " + match.DrawBetters + " " + match.AwayWinBetters);
             }
-            return result;
+
+            return stryktipsCoupon;
         }
+
+        //private CouponRow EvaluateMatch(StryktipsMatches.Match match)
+        //{
+        //    var couponRow = new CouponRow();
+        //    if (match.HomeWin > 25)
+        //    {
+        //        couponRow.One = true;
+        //    }
+        //    if (match.Draw > 25)
+        //    {
+        //        couponRow.Cross = true;
+        //    }
+        //    if (match.AwayWin > 25)
+        //    {
+        //        couponRow.Two = true;
+        //    }
+        //    return couponRow;
+        //}
 
         private void GetTeamStrength()
         {

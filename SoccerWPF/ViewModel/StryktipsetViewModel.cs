@@ -30,7 +30,7 @@ namespace SoccerWPF.ViewModel
         private ICommand _stryktipsButtonEvaluateCommand;
         private string _stryktipsstring;
         private bool _canExecuteStryktipset;
-        StryktipsCoupon _acoupon;
+        StryktipsMatches _acoupon;
         private string _goldenTicket;
         #endregion
 
@@ -106,10 +106,12 @@ namespace SoccerWPF.ViewModel
 
         public async void EvaluateStryktipset()
         {
-            GoldenTicket goldenTicket;
+            StryktipsCoupon goldenTicket;
             if(_acoupon != null)
                 await Task.Run(() => {
                     goldenTicket = _engine.EvaluateStryktipset(_acoupon);
+                    //Joker!
+                    Console.WriteLine(goldenTicket.GetHashCode());
                     StryktipsEvaluation = goldenTicket.ToString();
                 });
             

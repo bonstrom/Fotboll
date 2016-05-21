@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EngineLayer", "Engine\EngineLayer.csproj", "{D8BFDCA6-B8AA-47E4-878B-AE6D7F17624D}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -15,6 +15,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identifiers", "Identifiers\Identifiers.csproj", "{C6CDE9FA-CF25-403D-9618-9B6CE55D1D52}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoccerWPF", "SoccerWPF\SoccerWPF.csproj", "{58F628A3-7D54-4B80-9872-08277615FA92}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database", "Database\Database.csproj", "{ECC396F5-5F6C-4D60-A9D5-F6A49F6754B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +44,10 @@ Global
 		{58F628A3-7D54-4B80-9872-08277615FA92}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58F628A3-7D54-4B80-9872-08277615FA92}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58F628A3-7D54-4B80-9872-08277615FA92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECC396F5-5F6C-4D60-A9D5-F6A49F6754B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECC396F5-5F6C-4D60-A9D5-F6A49F6754B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECC396F5-5F6C-4D60-A9D5-F6A49F6754B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECC396F5-5F6C-4D60-A9D5-F6A49F6754B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

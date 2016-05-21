@@ -127,7 +127,7 @@ namespace ResourceAccessNameSpace
             }
         }
 
-        public StryktipsCoupon GetStryktipsCoupon()
+        public StryktipsMatches GetStryktipsCoupon()
         {
             Uri jsonUri = new Uri("http://aivu.se/hemsida/strykt/api/stryktipset");
             string jsonString = "";
@@ -135,7 +135,7 @@ namespace ResourceAccessNameSpace
             {
                 jsonString = wc.DownloadString(jsonUri);
             }
-            StryktipsCoupon stryktipsCoupon = JsonConvert.DeserializeObject<StryktipsCoupon>(jsonString);
+            StryktipsMatches stryktipsCoupon = JsonConvert.DeserializeObject<StryktipsMatches>(jsonString);
 
             return stryktipsCoupon;
         }
