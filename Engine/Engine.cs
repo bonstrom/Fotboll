@@ -154,7 +154,7 @@ namespace EngineNameSpace
             {
                 if (match.HomeWinBetters < match.DrawBetters && match.HomeWinBetters < match.AwayWinBetters)
                     match.One = true;
-                else if (match.DrawBetters < match.AwayWinBetters)
+                else if (match.DrawBetters-10 < match.AwayWinBetters)
                     match.Cross = true;
                 else
                     match.Two = true;

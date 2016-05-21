@@ -111,8 +111,10 @@ namespace SoccerWPF.ViewModel
                 await Task.Run(() => {
                     goldenTicket = _engine.EvaluateStryktipset(_acoupon);
                     //Joker!
-                    Console.WriteLine(goldenTicket.GetHashCode());
+                    string joker = goldenTicket.GetHashCode().ToString();
+
                     StryktipsEvaluation = goldenTicket.ToString();
+                    StryktipsEvaluation += "\n\n\n Joker: " + joker.Substring(0, 7);
                 });
             
         }
